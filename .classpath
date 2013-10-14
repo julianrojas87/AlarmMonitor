@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/slee.jar" sourcepath="lib/jslee-1_1-fr-api.zip"/>
+	<classpathentry kind="lib" path="lib/DU/standard-components-du.jar/jars/standard-events-jar-2.4.1.FINAL.jar"/>
+	<classpathentry kind="lib" path="lib/DU/standard-components-du.jar/jars/standard-events11-jar-2.4.1.FINAL.jar"/>
+	<classpathentry kind="lib" path="lib/DU/standard-components-du.jar/jars/standard-profiles-jar-2.4.1.FINAL.jar"/>
+	<classpathentry kind="lib" path="lib/DU/standard-components-du.jar/jars/standard-profiles11-jar-2.4.1.FINAL.jar"/>
+	<classpathentry kind="lib" path="lib/mobicents-1.0.jar"/>
+	<classpathentry kind="lib" path="/ReconfigurationService/jars/EndReconfiguration-event.jar"/>
+	<classpathentry kind="lib" path="/ReconfigurationService/jars/StartReconfiguration-event.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>
