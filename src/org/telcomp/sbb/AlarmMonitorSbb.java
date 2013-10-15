@@ -87,11 +87,24 @@ public abstract class AlarmMonitorSbb implements javax.slee.Sbb {
 					reconfigInputs.put("operationName",finalParameters.get(1));
 					reconfigInputs.put("mainControlFlow",finalParameters.get(2));
 					
-					//Dynamically filling the fields for branchControlFlows in the HashMap
+					//ALARM MESAGGE: LinkedInJobNotificator;getLinkedInJobs;2;0;0;userid-1061698729;sendTwitterMessage-null;
+					
+					//Dynamically filling the fields for branchControlFlows and Context info in the HashMap
+					int flg = 0;
 					for(int j=3; j<finalParameters.size();j++){
-						reconfigInputs.put("branchControlFlow"+Integer.toString(j-2),finalParameters.get(j));
+						if(finalParameters.get(j).indexOf("userid") < 0){
+							reconfigInputs.put("branchControlFlow"+Integer.toString(j-2),finalParameters.get(j));
+						} else{
+							reconfigInputs.put("userid", finalParameters.get(j).substring(7));
+							flg = j+1;
+							break;
+						}
 					}
-
+					
+					for(int k = flg; k<finalParameters.size(); k++){
+						reconfigInputs.put("contextInfo"+Integer.toString(k-flg), finalParameters.get(k));
+					}
+					
 					//Firing the event with required data in a HashMap
 					StartReconfigurationEvent getAlarmEvent = new StartReconfigurationEvent(reconfigInputs);
 					this.fireStartReconfigurationEvent(getAlarmEvent, aci, null);
@@ -109,8 +122,7 @@ public abstract class AlarmMonitorSbb implements javax.slee.Sbb {
 	}
 	
 	public void onEndReconfigurationEvent(EndReconfigurationEvent event, ActivityContextInterface aci){
-			System.out.println("Success finished Reconfiguration Proccess...");
-			System.out.println(event.isSuccess());
+			System.out.println("Success finished Reconfiguration Proccess..."+event.isSuccess());
 	}
 	
 	// TODO: Perform further operations if required in these methods.
